@@ -1,0 +1,17 @@
+[tool.pytest.ini_options]
+testpaths = ["./test"]
+addopts = "--maxfail=1 --disable-warnings -v"
+
+[tool.mypy]
+check_untyped_defs = true
+ignore_missing_imports = true
+exclude = [
+    "load_db_data.py",
+]
+
+[tool.flake8]
+max-line-length = 140
+exclude = [
+    "./dev_folder/*",
+    ".venv/*",
+]
