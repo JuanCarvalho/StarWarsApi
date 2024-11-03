@@ -9,6 +9,7 @@ class FlaskApiAdapter:
 
     @handle_errors_fastapi
     def health_check(self):
+        LOGGER.info("Health check")
         db_reposiroty: MongoDBRepository = repository_factory.create("mongodb_repository")  # type: ignore
         LOGGER.info(f"{db_reposiroty.health_check_db()}")
         return {"status": "ok"}

@@ -1,6 +1,8 @@
 from flask import Flask
+from flask_restx import Api
 
-from app.common.flask_routers.health_routers import health_bp
+from app.common.flask_routers.health_routers import health_ns
+from app.config.settings import settings
 
 
 def create_app():
@@ -9,12 +11,15 @@ def create_app():
 
     app.config["DEBUG"] = True
 
-    # Registra as rotas da aplicação
-    register_routes(app)
+    # Instância da API RestX e configuração do Swagger
+    api = Api(app, title="Star Wars API", version=settings.api_version, description="A simple Star Wars API", doc="/docs")
+
+    # Registra os namespaces
+    register_routes(api, health_ns)
 
     return app
 
 
-def register_routes(app):
-    # Registra o blueprint da rota de health check
-    app.register_blueprint(health_bp)
+def register_routes(api, router):
+    # Registra os namespaces
+    api.add_namespace(router)

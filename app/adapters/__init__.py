@@ -1,8 +1,8 @@
 from typing import TYPE_CHECKING, List
 
 from app.adapters.repository.mongo_db_reposiroty.mongodb_repository import MongoDBRepository
-from app.adapters.rest_api.flask_rest_api.rest_api_adapter import FlaskApiAdapter
 from app.adapters.repository.nosql_repository_contract import NoSqlRepositoryContract
+from app.adapters.rest_api.flask_rest_api.rest_api_adapter import FlaskApiAdapter
 from app.adapters.rest_api.rest_api_contract import ApiRestContract
 
 __all__ = [
