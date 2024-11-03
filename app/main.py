@@ -1,7 +1,6 @@
-from app.config.flask_setup import create_app
+from app.config.flask_setup import app as api_rest
+from app.config.load_routers import *  # noqa
 from app.factories.load_factories import *  # noqa
-
-api_rest = create_app()
 
 if __name__ == "__main__":
     # Inicializa o servidor

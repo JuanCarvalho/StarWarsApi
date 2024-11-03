@@ -14,5 +14,5 @@ class MongoDBRepository:
     def get_collection(self, collection_name: str):
         return self.db_connection.collection("star_wars", collection_name)
 
-    def health_check_db(self):
+    def health_check(self):
         return self.db_connection.client.server_info()
