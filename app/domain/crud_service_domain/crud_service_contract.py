@@ -15,7 +15,7 @@ class CrudServiceContract(Protocol):
     def delete(self, id: int) -> None:
         pass
 
-    def get(self, id: int, table_name: str) -> dict:
+    def get(self, id: str) -> dict:
         pass
 
     def list(self, filters: dict | None = None) -> dict:

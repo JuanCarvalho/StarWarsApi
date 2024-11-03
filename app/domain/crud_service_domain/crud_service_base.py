@@ -9,7 +9,7 @@ class CrudServiceBase:
     def health_check(self):
         return self.crud_port_output.health_check()
 
-    def get(self, id: int):
+    def get(self, id: str):
         return self.crud_port_output.get(id)
 
     def list(self, filters: dict | None = None):

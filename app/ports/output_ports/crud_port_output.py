@@ -21,8 +21,8 @@ class CrudPortOutput:
     def health_check(self):
         return self.repository.health_check()
 
-    def get(self, id: int):
-        return self.repository.get(id)
+    def get(self, id: str):
+        return self.serialize_data(self.repository.get(id))
 
     def list(self, filters: dict | None = None):
         return self.serialize_data(self.repository.list(filters))

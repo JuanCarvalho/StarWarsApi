@@ -12,8 +12,8 @@ class CrudPortInput:
     def health_check(self):
         return self.domain_service.health_check()
 
-    def get(self, id: int, table_name: str):
-        return self.domain_service.get(id, table_name)
+    def get(self, id: str):
+        return self.domain_service.get(id)
 
     def list(self, filters: dict | None = None):
         return self.domain_service.list(filters)

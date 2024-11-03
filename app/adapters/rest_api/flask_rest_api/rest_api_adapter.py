@@ -16,11 +16,9 @@ class FlaskApiAdapter:
         return self.crud_input_port.health_check()
 
     @handle_errors_flaskapi
-    def get(self, id: int, table_name: str):
-        LOGGER.info(f"Get item with id {id}")
-        return self.crud_input_port.get(id, table_name)
+    def get(self, id: str):
+        return self.crud_input_port.get(id)
 
     @handle_errors_flaskapi
     def list(self, filters: dict | None = None):
-        LOGGER.info(f"List items with filters {filters}")
         return self.crud_input_port.list(filters)
