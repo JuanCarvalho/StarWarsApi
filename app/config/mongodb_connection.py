@@ -11,4 +11,6 @@ class MongoDBConnection:
         return self.client[db_name]
 
     def collection(self, db_name: str, collection_name: str):
+        if not collection_name:
+            return None
         return self.db(db_name)[collection_name]

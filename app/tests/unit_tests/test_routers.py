@@ -8,3 +8,7 @@ class TestRouters:
         assert response.status_code == 200
         assert response.json == {"status": "ok"}
         mongodb_health_check_method.assert_called_once()
+
+    def test_get(self, client):
+        response = client.get("/planet/")
+        assert response.status_code == 200

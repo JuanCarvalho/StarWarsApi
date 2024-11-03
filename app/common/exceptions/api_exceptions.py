@@ -14,7 +14,7 @@ class BadRequest(CustomException):
         super().__init__("Bad Request")
 
 
-def handle_errors_fastapi(func):
+def handle_errors_flaskapi(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
         try:
