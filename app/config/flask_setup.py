@@ -8,6 +8,7 @@ def create_app() -> Flask:
     # Inicializa a aplicação Flask
     flask_app = Flask(__name__)
     flask_app.config["DEBUG"] = True
+    flask_app.url_map.strict_slashes = False
     return flask_app
 
 

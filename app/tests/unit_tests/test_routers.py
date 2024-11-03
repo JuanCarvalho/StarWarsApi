@@ -9,6 +9,7 @@ class TestRouters:
         assert response.json == {"status": "ok"}
         mongodb_health_check_method.assert_called_once()
 
-    def test_get(self, client):
-        response = client.get("/planet/")
+    @pytest.mark.parametrize("table_name", ["planet", "movie"])
+    def test_list(self, client, table_name):
+        response = client.get(f"/{table_name}/")
         assert response.status_code == 200
