@@ -12,15 +12,14 @@
 1. Create .env file with the following variables:
 
     ```
-    ENV=local
-    
-    API_VERSION=v1
-    API_HOST=0.0.0.0
-    API_PORT=8000
-    
-    # MONGODB_HOST=mongodb
-    MONGODB_HOST=localhost
-    MONGODB_PORT=27017
+   ENV=local
+
+   API_VERSION=v1
+   API_HOST=0.0.0.0
+   API_PORT=8000
+   
+   MONGODB_HOST=mongodb
+   MONGODB_PORT=27017
     ```
 
 2. Up the containers:
