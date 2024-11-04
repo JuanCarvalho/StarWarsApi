@@ -32,3 +32,12 @@ class PlanetsResourceGet(Resource):
         api_rest_adapter: ApiRestContract = api_rest_factory.create("flask_api_adapter", table_name="planetas")
         response = api_rest_adapter.get(id)
         return jsonify(response)
+
+    @planets_ns.doc(description="Update planet by id", responses={200: "Success", 404: "Planet not found"})
+    def put(self, id: str):
+        try:
+            api_rest_adapter: ApiRestContract = api_rest_factory.create("flask_api_adapter", table_name="planetas")
+            response = api_rest_adapter.update(id, request.json)  # type: ignore
+            return response, 200
+        except BadRequest as e:
+            return {"message": str(e)}, 400

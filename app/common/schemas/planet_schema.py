@@ -38,4 +38,4 @@ class PlanetUpdateSchema(BaseModel):
     clima: Optional[str] = None
     diametro: Optional[int] = None
     populacao: Optional[int] = None
-    filmes: Optional[List[Union[str, "MoviesCreateSchema"]]] = None
+    filmes: Optional[List[str]] = None

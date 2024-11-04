@@ -9,7 +9,7 @@ class CrudServiceContract(Protocol):
     def create(self, data: dict) -> dict:
         pass
 
-    def update(self, data: dict) -> dict:
+    def update(self, id: str, data: dict) -> None:
         pass
 
     def delete(self, id: int) -> None:

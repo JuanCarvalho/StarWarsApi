@@ -14,3 +14,6 @@ class ApiRestContract(Protocol):
 
     def create(self, data: dict) -> Any:
         pass
+
+    def update(self, id: str, data: dict) -> Any:
+        pass

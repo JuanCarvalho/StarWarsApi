@@ -26,3 +26,7 @@ class FlaskApiAdapter:
     @handle_errors_flaskapi
     def create(self, data: dict):
         return self.crud_input_port.create(data)
+
+    @handle_errors_flaskapi
+    def update(self, id: str, data: dict):
+        return self.crud_input_port.update(id, data)

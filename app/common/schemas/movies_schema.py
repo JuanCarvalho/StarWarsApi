@@ -35,4 +35,4 @@ class MoviesUpdateSchema(BaseModel):
     titulo: Optional[str] = None
     data_lancamento: Optional[str] = None
     diretor: Optional[str] = None
-    planetas: Optional[List[Union[str, "PlanetCreateSchema"]]] = None
+    planetas: Optional[List[str]] = None

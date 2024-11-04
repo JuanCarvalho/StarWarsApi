@@ -37,3 +37,7 @@ class CrudPortInput:
     def create(self, data: dict):
         data = self.validate_data(data, "create")
         return self.domain_service.create(data)
+
+    def update(self, id: str, data: dict):
+        data = self.validate_data(data, "update")
+        return self.domain_service.update(id, data)

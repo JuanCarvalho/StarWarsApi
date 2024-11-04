@@ -40,4 +40,4 @@ class CrudPortOutput:
     def update(self, id: str, data: dict):
         data.update({"data_ultima_alteracao": datetime.now()})
         response = self.repository.update(id, data)
-        return str(response.modified_count)
+        return {"modified_count": response.modified_count}
