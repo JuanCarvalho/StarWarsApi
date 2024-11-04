@@ -41,3 +41,7 @@ class CrudPortOutput:
         data.update({"data_ultima_alteracao": datetime.now()})
         response = self.repository.update(id, data)
         return {"modified_count": response.modified_count}
+
+    def delete(self, id: str):
+        response = self.repository.delete(id)
+        return {"deleted_count": response.deleted_count}

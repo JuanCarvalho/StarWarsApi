@@ -41,3 +41,6 @@ class CrudPortInput:
     def update(self, id: str, data: dict):
         data = self.validate_data(data, "update")
         return self.domain_service.update(id, data)
+
+    def delete(self, id: str):
+        return self.domain_service.delete(id)

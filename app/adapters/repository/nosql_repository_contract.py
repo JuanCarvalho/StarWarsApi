@@ -17,3 +17,6 @@ class NoSqlRepositoryContract(Protocol):
 
     def update(self, id: str, data: dict) -> Any:
         pass
+
+    def delete(self, id: str) -> Any:
+        pass

@@ -41,3 +41,9 @@ class PlanetsResourceGet(Resource):
             return response, 200
         except BadRequest as e:
             return {"message": str(e)}, 400
+
+    @movies_ns.doc(description="Delete movie by id", responses={200: "Success", 404: "Planet not found"})
+    def delete(self, id: str):
+        api_rest_adapter: ApiRestContract = api_rest_factory.create("flask_api_adapter", table_name="filmes")
+        response = api_rest_adapter.delete(id)
+        return response, 200

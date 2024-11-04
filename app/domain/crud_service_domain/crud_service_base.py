@@ -40,3 +40,6 @@ class CrudServiceBase:
             return movie_update.process_update(id, data)
         else:
             return self.crud_port_output.update(id, data)
+
+    def delete(self, id: str):
+        return self.crud_port_output.delete(id)

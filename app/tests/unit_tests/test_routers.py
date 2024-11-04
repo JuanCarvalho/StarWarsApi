@@ -45,3 +45,13 @@ class TestRouters:
         }
         response = client.put(f"/{table_name}/{_id}", json=update_data)
         assert response.status_code == 200
+
+    @pytest.mark.parametrize(
+        "table_name",
+        ["planet", "movie"],
+    )
+    def test_delete(self, client, table_name, mocker_mongodb_collection):
+        _id = "6727b9062a4df9799e62dbda"
+        response = client.delete(f"/{table_name}/{_id}")
+        assert response.status_code == 200
+        mocker_mongodb_collection.assert_called_once()

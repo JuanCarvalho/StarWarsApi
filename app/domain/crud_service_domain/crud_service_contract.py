@@ -12,7 +12,7 @@ class CrudServiceContract(Protocol):
     def update(self, id: str, data: dict) -> None:
         pass
 
-    def delete(self, id: int) -> None:
+    def delete(self, id: str) -> None:
         pass
 
     def get(self, id: str) -> dict:

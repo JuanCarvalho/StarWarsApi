@@ -30,3 +30,7 @@ class FlaskApiAdapter:
     @handle_errors_flaskapi
     def update(self, id: str, data: dict):
         return self.crud_input_port.update(id, data)
+
+    @handle_errors_flaskapi
+    def delete(self, id: str):
+        return self.crud_input_port.delete(id)

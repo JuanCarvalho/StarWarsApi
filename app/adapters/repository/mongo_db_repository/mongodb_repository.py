@@ -39,3 +39,8 @@ class MongoDBRepository:
         collection = self.get_collection(self.collection_name)
         object_id = ObjectId(id)
         return collection.update_one({"_id": object_id}, {"$set": data})
+
+    def delete(self, id: str):
+        collection = self.get_collection(self.collection_name)
+        object_id = ObjectId(id)
+        return collection.delete_one({"_id": object_id})
