@@ -10,8 +10,8 @@ class CustomException(Exception):
 
 
 class BadRequest(CustomException):
-    def __init__(self):
-        super().__init__("Bad Request")
+    def __init__(self, message: Optional[str] = None):
+        super().__init__(message)
 
 
 def handle_errors_flaskapi(func):
@@ -20,8 +20,8 @@ def handle_errors_flaskapi(func):
         try:
             return func(*args, **kwargs)
         except BadRequest as e:
-            LOGGER.error("Erro customizado - {e.message}")
-            raise Exception(str(e))  # Aplicar http error do flask
+            LOGGER.error(f"Erro customizado - {e.message}")
+            raise BadRequest(e.message)
         except Exception as e:
             LOGGER.error("Erro desconhecido")
             raise Exception(str(e))  # Aplicar http error do flask

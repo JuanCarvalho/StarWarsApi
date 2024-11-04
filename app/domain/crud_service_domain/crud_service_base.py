@@ -14,3 +14,6 @@ class CrudServiceBase:
 
     def list(self, filters: dict | None = None):
         return self.crud_port_output.list(filters)
+
+    def create(self, data: dict):
+        return self.crud_port_output.create(data)

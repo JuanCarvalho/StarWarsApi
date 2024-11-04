@@ -30,3 +30,7 @@ class MongoDBRepository:
             filters = {}
         collection = self.get_collection(self.collection_name)
         return list(collection.find(filters))
+
+    def create(self, data: dict):
+        collection = self.get_collection(self.collection_name)
+        return collection.insert_one(data)

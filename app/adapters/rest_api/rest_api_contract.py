@@ -11,3 +11,6 @@ class ApiRestContract(Protocol):
 
     def list(self, filters: dict | None = None) -> Any:
         pass
+
+    def create(self, data: dict) -> Any:
+        pass

@@ -22,3 +22,7 @@ class FlaskApiAdapter:
     @handle_errors_flaskapi
     def list(self, filters: dict | None = None):
         return self.crud_input_port.list(filters)
+
+    @handle_errors_flaskapi
+    def create(self, data: dict):
+        return self.crud_input_port.create(data)

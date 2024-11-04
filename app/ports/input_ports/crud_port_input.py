@@ -1,3 +1,9 @@
+from typing import Literal
+
+from pydantic import ValidationError
+
+from app.common.exceptions.api_exceptions import BadRequest
+from app.common.schemas import schema_mapping_create_update
 from app.domain import CrudServiceContract
 from app.factories import domain_factory, port_factory
 
@@ -9,6 +15,16 @@ class CrudPortInput:
         self.table_name = table_name
         self.domain_service: CrudServiceContract = domain_factory.create("crud_default", table_name=table_name)
 
+    def validate_data(self, data: dict, type_schema: Literal["create", "update"]):
+        # TODO: Remover para uma classe de serialização e utilizar factory
+        if not self.table_name:
+            return data
+        schema = schema_mapping_create_update(self.table_name, type_schema)
+        try:
+            return schema(**data).dict()
+        except ValidationError as e:
+            raise BadRequest(f"Invalid data: {e}")
+
     def health_check(self):
         return self.domain_service.health_check()
 
@@ -17,3 +33,7 @@ class CrudPortInput:
 
     def list(self, filters: dict | None = None):
         return self.domain_service.list(filters)
+
+    def create(self, data: dict):
+        data = self.validate_data(data, "create")
+        return self.domain_service.create(data)

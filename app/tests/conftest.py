@@ -1,6 +1,6 @@
+from typing import Literal
+
 import pytest
-import os
-import json
 
 from app.config.flask_setup import app as flask_app
 from app.config.load_routers import *  # noqa
@@ -36,12 +36,14 @@ def mocker_db_connection(mocker):
     )
 
 
-def load_asset_data(asset_name: str):
+def load_asset_data(asset_name: str, data_type: Literal["data", "create_data", "update_data"] = "data") -> dict:
     """
     Carrega os arquivos JSON da pasta test/assets
     """
     try:
         module = __import__("app.tests.assets", fromlist=[asset_name])
+        if data_type == "create_data":
+            return getattr(module, asset_name).create_data
         return getattr(module, asset_name).data
     except Exception as e:
         raise Exception(f"Erro ao carregar o asset {asset_name}: {e}")

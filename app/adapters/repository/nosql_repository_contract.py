@@ -11,3 +11,6 @@ class NoSqlRepositoryContract(Protocol):
 
     def list(self, filters: dict | None = None) -> dict:
         pass
+
+    def create(self, data: dict) -> dict:
+        pass

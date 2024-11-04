@@ -1,3 +1,4 @@
+from app.adapters import NoSqlRepositoryContract
 from app.common.schemas import schema_mapping
 from app.factories import port_factory, repository_factory
 
@@ -7,7 +8,7 @@ class CrudPortOutput:
 
     def __init__(self, table_name: str | None = None):
         self.table_name = table_name
-        self.repository = repository_factory.create("mongodb_repository", collection_name=table_name)
+        self.repository: NoSqlRepositoryContract = repository_factory.create("mongodb_repository", collection_name=table_name)
 
     def serialize_data(self, response_data: dict | list):
         # TODO: Implementar com factory ou decorator
@@ -26,3 +27,6 @@ class CrudPortOutput:
 
     def list(self, filters: dict | None = None):
         return self.serialize_data(self.repository.list(filters))
+
+    def create(self, data: dict):
+        return self.repository.create(data)
