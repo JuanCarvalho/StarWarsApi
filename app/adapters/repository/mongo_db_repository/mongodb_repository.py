@@ -34,3 +34,8 @@ class MongoDBRepository:
     def create(self, data: dict):
         collection = self.get_collection(self.collection_name)
         return collection.insert_one(data)
+
+    def update(self, id: str, data: dict):
+        collection = self.get_collection(self.collection_name)
+        object_id = ObjectId(id)
+        return collection.update_one({"_id": object_id}, {"$set": data})

@@ -1,4 +1,4 @@
-from typing import Protocol
+from typing import Any, Protocol
 
 
 class NoSqlRepositoryContract(Protocol):
@@ -12,5 +12,8 @@ class NoSqlRepositoryContract(Protocol):
     def list(self, filters: dict | None = None) -> dict:
         pass
 
-    def create(self, data: dict) -> dict:
+    def create(self, data: dict) -> Any:
+        pass
+
+    def update(self, id: str, data: dict) -> Any:
         pass

@@ -13,14 +13,15 @@ class PlanetSchema(BaseModel):
     clima: str
     diametro: int
     populacao: int
-    filmes: List[str]  # Modificação para representar os ObjectIds como strings
+    filmes: List[str | None]  # Modificação para representar os ObjectIds como strings
     data_criacao: datetime
     data_ultima_alteracao: datetime
 
     @classmethod
     def from_mongo(cls, data: dict):
         data["id"] = str(data["_id"])
-        data["filmes"] = [str(filme_id) for filme_id in data.get("filmes", [])]
+        filmes = data.get("filmes") or []
+        data["filmes"] = [str(filme_id) for filme_id in filmes]
         return cls(**data)
 
 

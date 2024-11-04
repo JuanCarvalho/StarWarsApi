@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from app.adapters import NoSqlRepositoryContract
 from app.common.schemas import schema_mapping
 from app.factories import port_factory, repository_factory
@@ -29,4 +31,13 @@ class CrudPortOutput:
         return self.serialize_data(self.repository.list(filters))
 
     def create(self, data: dict):
-        return self.repository.create(data)
+        data_criacao = datetime.now()
+        data.update({"data_criacao": data_criacao})
+        data.update({"data_ultima_alteracao": data_criacao})
+        response = self.repository.create(data)
+        return str(response.inserted_id)
+
+    def update(self, id: str, data: dict):
+        data.update({"data_ultima_alteracao": datetime.now()})
+        response = self.repository.update(id, data)
+        return str(response.modified_count)

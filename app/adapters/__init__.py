@@ -9,6 +9,7 @@ __all__ = [
     "FlaskApiAdapter",
     "MongoDBRepository",
     "ApiRestContract",
+    "NoSqlRepositoryContract",
 ]
 
 if TYPE_CHECKING:

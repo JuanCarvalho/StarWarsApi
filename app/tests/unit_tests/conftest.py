@@ -20,7 +20,7 @@ def mocker_mongodb_collection(mocker):
         return load_asset_data(collection_name)[0]
 
     def _mocker_insert_one(collection_name: str):
-        return {"_id": "6727b9062a4df9799e62dbda"}
+        return mocker.MagicMock(inserted_id="6727b9062a4df9799e62dbda")
 
     def _mocker_get_collection(collection_name: str):
         _collection = mocker.MagicMock()

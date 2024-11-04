@@ -12,14 +12,15 @@ class MoviesSchema(BaseModel):
     titulo: str
     data_lancamento: str
     diretor: str
-    planetas: List[str]
+    planetas: List[str | None]
     data_criacao: datetime
     data_ultima_alteracao: datetime
 
     @classmethod
     def from_mongo(cls, data: dict):
         data["id"] = str(data["_id"])
-        data["planetas"] = [str(planeta_id) for planeta_id in data.get("planetas", [])]
+        planetas = data.get("planetas") or []
+        data["planetas"] = [str(planeta_id) for planeta_id in planetas]
         return cls(**data)
 
 
