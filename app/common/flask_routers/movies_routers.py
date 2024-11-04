@@ -3,9 +3,13 @@ from flask_restx import Namespace, Resource
 
 from app.adapters.rest_api.rest_api_contract import ApiRestContract
 from app.common.exceptions.api_exceptions import BadRequest
+from app.common.schemas import MoviesCreateSchema
 from app.factories import api_rest_factory
+from app.utils.pydantic_to_flask_model import pydantic_to_flask_model
 
 movies_ns = Namespace("movie", description="Planets operations")
+
+movies_model = pydantic_to_flask_model(MoviesCreateSchema, movies_ns)
 
 
 @movies_ns.route("/")
@@ -15,7 +19,11 @@ class PlanetsResourceList(Resource):
         api_rest_adapter: ApiRestContract = api_rest_factory.create("flask_api_adapter", table_name="filmes")
         return jsonify(api_rest_adapter.list())
 
-    @movies_ns.doc(description="Create a new movie", responses={201: "Created"})
+    @movies_ns.doc(
+        description="Create a new movie",
+        responses={201: "Created"},
+    )
+    @movies_ns.expect(movies_model)
     def post(self):
         try:
             api_rest_adapter: ApiRestContract = api_rest_factory.create("flask_api_adapter", table_name="filmes")

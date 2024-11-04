@@ -3,9 +3,18 @@ from flask_restx import Namespace, Resource
 
 from app.adapters.rest_api.rest_api_contract import ApiRestContract
 from app.common.exceptions.api_exceptions import BadRequest
+from app.common.schemas import PlanetCreateSchema
 from app.factories import api_rest_factory
+from app.utils.pydantic_to_flask_model import pydantic_to_flask_model
 
 planets_ns = Namespace("planet", description="Planets operations")
+
+# TODO: - Melhorar a documentação
+#       - Adicionar os modelos esperados para os métodos POST e PUT
+#       - Adicionar os modelos de resposta esperados para os métodos GET, POST, PUT e DELETE
+
+
+planet_model = pydantic_to_flask_model(PlanetCreateSchema, planets_ns)
 
 
 @planets_ns.route("/")
@@ -15,7 +24,11 @@ class PlanetsResourceList(Resource):
         api_rest_adapter: ApiRestContract = api_rest_factory.create("flask_api_adapter", table_name="planetas")
         return jsonify(api_rest_adapter.list())
 
-    @planets_ns.doc(description="Create a new planet", responses={201: "Created"})
+    @planets_ns.doc(
+        description="Create a new planet",
+        responses={201: "Created"},
+    )
+    @planets_ns.expect(planet_model)
     def post(self):
         try:
             api_rest_adapter: ApiRestContract = api_rest_factory.create("flask_api_adapter", table_name="planetas")

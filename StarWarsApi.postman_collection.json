@@ -1,0 +1,269 @@
+{
+	"info": {
+		"_postman_id": "79868f6e-be51-4117-8ff7-91978505f161",
+		"name": "Star Wars Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36478914"
+	},
+	"item": [
+		{
+			"name": "health",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:8000/health",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"health"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "planet",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:8000/planet/",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"planet",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "movie",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:8000/movie",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"movie"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "movie",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"titulo\": \"O Império Contra-Ataca\",\n    \"data_lancamento\": \"1980-05-21\",\n    \"diretor\": \"Irvin Kershner\",\n    \"planetas\": [\n        {\n            \"nome\": \"Tatooine\",\n            \"clima\": \"arido\",\n            \"diametro\": 10465,\n            \"populacao\": 200000\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://0.0.0.0:8000/movie/",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"movie",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "movie",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"titulo\": \"O Império Contra-Ataca\",\n    \"data_lancamento\": \"1980-05-21\",\n    \"diretor\": \"Irvin Kershner\",\n    \"planetas\": []\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://0.0.0.0:8000/movie/6728ccb7ead7298c49cf4574",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"movie",
+						"6728ccb7ead7298c49cf4574"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "movie",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"titulo\": \"O Império Contra-Ataca\",\n    \"data_lancamento\": \"1980-05-21\",\n    \"diretor\": \"Irvin Kershner\",\n    \"planetas\": [\"6728ccbaead7298c49cf457a\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://0.0.0.0:8000/movie/6728ccb7ead7298c49cf4574",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"movie",
+						"6728ccb7ead7298c49cf4574"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "planet",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nome\": \"Tatooine\",\n    \"clima\": \"arido\",\n    \"diametro\": 10465,\n    \"populacao\": 200000,\n    \"filmes\": [\n        {\n            \"titulo\": \"Uma Nova Esperança\",\n            \"data_lancamento\": \"1977-05-25\",\n            \"diretor\": \"George Lucas\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://0.0.0.0:8000/planet/",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"planet",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "planet",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nome\": \"NOVO NOME\",\n    \"clima\": \"arido\",\n    \"diametro\": 10465,\n    \"populacao\": 200000,\n    \"filmes\": []\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://0.0.0.0:8000/planet/6728ccbaead7298c49cf457a",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"planet",
+						"6728ccbaead7298c49cf457a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "planet",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nome\": \"NOVO NOME\",\n    \"clima\": \"arido\",\n    \"diametro\": 10465,\n    \"populacao\": 200000,\n    \"filmes\": [\"6728ccb7ead7298c49cf4574\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://0.0.0.0:8000/planet/6728ccbaead7298c49cf457a",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"planet",
+						"6728ccbaead7298c49cf457a"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
